@@ -14,9 +14,9 @@ void prompt(char* home) {
     char *relative_path = strstr(cwd, home_dir);
 
     if (relative_path != NULL) {
-        printf("<%s@%s:~%s> ", username, hostname, relative_path + strlen(home_dir));
+        printf("<\033[1;34m%s\033[0m@%s:~%s> ", username, hostname, relative_path + strlen(home_dir));
     } else {
-        printf("<%s@%s:%s> ", username, hostname, cwd);
+        printf("<\033[1;34m%s\033[0m@%s:~%s> ", username, hostname, cwd);
     }
     // printf("<%s@%s:%s> ", username, hostname, cwd);
     fflush(stdout);

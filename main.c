@@ -4,6 +4,8 @@ int main()
 {
     char home[1024];
     getcwd(home, sizeof(home));
+    char prevwd[1024];
+    strcpy(prevwd,home);
     // Keep accepting commands
     while (1)
     {
@@ -24,7 +26,7 @@ int main()
         {
             for (int j = 0; cmds[i][j] != NULL; j++) {
                 // printf("%s\n", cmds[i][j]);
-                identify(cmds[i][j], home);
+                identify(cmds[i][j], home, prevwd);
             }
         }
     }
