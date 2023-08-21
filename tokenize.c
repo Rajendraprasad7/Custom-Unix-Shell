@@ -20,5 +20,8 @@ void tokenizeit(const char *command, char **tokens, int *numTokens)
         (*numTokens)++;
         token = strtok(NULL, " \t");
     }
+
+    
+
     free(cmdCopy);
 }

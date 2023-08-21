@@ -18,7 +18,7 @@ void identify(char* cmd, char* home, char* prevwd)
         int show_hidden = 0;
         int show_details = 0;
 
-        for (int i = 1; i<10; i++) {
+        for (int i = 1; i<numTokens; i++) {
             if (strcmp(tokens[i], "-a") == 0) {
                 show_hidden = 1;
             } 
@@ -40,6 +40,17 @@ void identify(char* cmd, char* home, char* prevwd)
         }
         peekdir(path, home, prevwd, show_hidden, show_details);
 
+    }
+    else if (strcmp(tokens[0], "proclore") == 0)
+    {
+        if (numTokens == 1)
+        {
+            get_process_info(getpid());
+        }
+        else
+        {
+            get_process_info(atoi(tokens[1]));
+        }
     }
     else 
     {

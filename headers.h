@@ -15,6 +15,9 @@
 #include <time.h>
 #include <fcntl.h>
 #include <sys/sysinfo.h>
+#include <sys/ioctl.h>
+#include <termios.h>
+
 
 #include "prompt.h"
 #include "getCommands.h"
