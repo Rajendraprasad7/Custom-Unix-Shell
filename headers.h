@@ -13,6 +13,8 @@
 #include <pwd.h>
 #include <grp.h>
 #include <time.h>
+#include <fcntl.h>
+#include <sys/sysinfo.h>
 
 #include "prompt.h"
 #include "getCommands.h"
@@ -20,5 +22,6 @@
 #include "tokenize.h"
 #include "warp.h"
 #include "peek.h"
+#include "proclore.h"
 
 #endif

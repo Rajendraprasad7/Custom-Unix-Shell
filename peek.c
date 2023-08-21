@@ -43,8 +43,8 @@ void peekdir(char* path, char* home, char* prev, int show_hidden, int show_detai
     struct dirent **entry_list;
     int num_entries = scandir(newpath, &entry_list, NULL, alphasort);
     if (num_entries == -1) {
-        perror("scandir");
-        return;
+        strcpy(newpath, ".");
+        num_entries = scandir(newpath, &entry_list, NULL, alphasort);
     }
 
     for (int i = 0; i < num_entries; i++) {
