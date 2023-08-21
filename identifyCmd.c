@@ -54,7 +54,8 @@ void identify(char* cmd, char* home, char* prevwd)
     }
     else 
     {
-        system(cmd);
+        tokens[numTokens] = NULL;
+        execute_cmd(tokens);
     }
     return;
 }

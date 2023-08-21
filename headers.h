@@ -26,5 +26,6 @@
 #include "warp.h"
 #include "peek.h"
 #include "proclore.h"
+#include "run.h"
 
 #endif
