@@ -93,13 +93,12 @@ void identify(char* cmd, char* home, char* prevwd)
                 if (i+1 < numTokens)
                 {
                     strcpy(where, tokens[i+1]);
-                    i = -1;
                 }
                 else 
                 {
-                    printf("ERROR: Invalid Command\n");
-                    return;
+                    strcpy(where, ".");
                 }
+                i = -1;
                 break;
             }
         }

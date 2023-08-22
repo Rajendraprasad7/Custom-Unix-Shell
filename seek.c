@@ -17,11 +17,12 @@ void find(char* orig, char * where, char * name, char* home, int isdir, int isfi
     char tmp[1024];
 
     // static char found[1024];
-
     if(where[0] == '~')
     {
         strcpy(newpath,home);
-        strcat(newpath, where+1);
+        if (strlen(where) > 1)
+        {strcat(newpath, where+1);
+        }
     }
     else if(where[0] == '-')
     {
@@ -31,7 +32,7 @@ void find(char* orig, char * where, char * name, char* home, int isdir, int isfi
     {
         strcpy(newpath,where);
     }
-
+ 
     if (dir = opendir(newpath)) 
     {
         while ((entry = readdir(dir)) != NULL) 
