@@ -52,6 +52,68 @@ void identify(char* cmd, char* home, char* prevwd)
             get_process_info(atoi(tokens[1]));
         }
     }
+    
+    else if (strcmp(tokens[0], "seek") == 0)
+    {
+        int isf = 0, isd = 0, e = 0;
+        char target[100]; 
+        char where[1024];
+        int i;
+        for(i=1; i<numTokens; i++)
+        {
+            if (strcmp(tokens[i], "-f") == 0) {
+                isf = 1;
+            } 
+            else if (strcmp(tokens[i], "-d") == 0) {
+                isd = 1;
+            } 
+            else if(strcmp(tokens[i], "-e") == 0)
+            {
+                e = 1;
+            }
+            else if((strcmp(tokens[i], "-ef") == 0) || (strcmp(tokens[i], "-fe") == 0))
+            {
+                e = 1;
+                isf = 1;
+            }
+            else if((strcmp(tokens[i], "-ed") == 0) || (strcmp(tokens[i], "-de") == 0))
+            {
+                e = 1;
+                isd = 1;
+            }
+            else if((strcmp(tokens[i], "-df") == 0) || (strcmp(tokens[i], "-fd") == 0))
+            {
+                isf = 1;
+                isd = 1;
+            }
+            else 
+            {
+                strcpy(target, tokens[i]);
+
+                if (i+1 < numTokens)
+                {
+                    strcpy(where, tokens[i+1]);
+                    i = -1;
+                }
+                else 
+                {
+                    printf("ERROR: Invalid Command\n");
+                    return;
+                }
+                break;
+            }
+        }
+
+        if ((isf && isd) || (i != -1))
+        {
+            printf("ERROR: Invalid flags!\n");
+        }
+        else
+        {
+            find(where, where, target, home, isd, isf, e);
+        }
+    }
+
     else 
     {
         tokens[numTokens] = NULL;

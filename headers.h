@@ -12,8 +12,10 @@
 #include <sys/stat.h>
 #include <pwd.h>
 #include <grp.h>
-#include <time.h>
+#include <sys/wait.h>
 #include <fcntl.h>
+#include <sys/time.h>
+#include <time.h>
 #include <sys/sysinfo.h>
 #include <sys/ioctl.h>
 #include <termios.h>
@@ -27,5 +29,7 @@
 #include "peek.h"
 #include "proclore.h"
 #include "run.h"
+#include "seek.h"
+#include "main.h"
 
 #endif

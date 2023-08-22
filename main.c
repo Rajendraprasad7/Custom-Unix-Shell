@@ -1,5 +1,8 @@
 #include "headers.h"
 
+int counter = 0;
+char found[1024];
+
 int main()
 {
     char home[1024];
