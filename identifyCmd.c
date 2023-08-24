@@ -1,6 +1,6 @@
 #include "headers.h"
 
-void identify(char* cmd, char* home, char* prevwd)
+int identify(char* cmd, char* home, char* prevwd)
 {
     char *tokens[10];
     int numTokens;
@@ -103,7 +103,7 @@ void identify(char* cmd, char* home, char* prevwd)
             }
         }
 
-        if ((isf && isd) || (i != -1))
+        if ((isf && isd) || (i != -1) || (isf == 0 && isd == 0))
         {
             printf("ERROR: Invalid flags!\n");
         }
@@ -113,10 +113,52 @@ void identify(char* cmd, char* home, char* prevwd)
         }
     }
 
+    else if((strcmp(tokens[0],"exit") == 0) && numTokens == 1)
+    {
+        exit_flag = 1;
+    }
+    else if(strcmp(tokens[0],"pastevents") == 0)
+    {
+        if(numTokens == 1)
+        {
+            show_history();
+        }
+
+        else if(numTokens == 2)
+        {
+            if(strcmp(tokens[1], "purge") == 0)
+            {
+                clear_history();
+            }
+            else 
+            {
+                printf("ERROR: Invalid command\n");
+                return 0;
+            }
+        }
+
+        else if(numTokens == 3)
+        {
+            if (strcmp(tokens[1], "execute") == 0 && atoi(tokens[2]) > 0 && atoi(tokens[2]) <= numEvents)
+            {
+                return execute_history(atoi(tokens[2]), home, prevwd);
+            }
+            else 
+            {
+                printf("ERROR: Invalid command\n");
+                return 0;
+            }
+        }
+        else 
+        {
+            printf("ERROR: Invalid command\n");
+            return 0;
+        }
+    }
     else 
     {
         tokens[numTokens] = NULL;
         execute_cmd(tokens);
     }
-    return;
+    return 0;
 }

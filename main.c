@@ -2,6 +2,9 @@
 
 int counter = 0;
 char found[1024];
+int exit_flag = 0;
+char* events[16];
+int numEvents = 0;
 
 int main()
 {
@@ -9,6 +12,9 @@ int main()
     getcwd(home, sizeof(home));
     char prevwd[1024];
     strcpy(prevwd,home);
+
+    load_history(home);
+
     // Keep accepting commands
     while (1)
     {
@@ -20,17 +26,17 @@ int main()
 
         fgets(input, 4096, stdin);
 
-        // printf("%s %lu\n", input, strlen(input));
+        add_to_history(input, home);
 
         getCommands(input, cmds);
-
-
+        
         for (int i = 0; cmds[i] != NULL; i++)
         {
             for (int j = 0; cmds[i][j] != NULL; j++) {
-                // printf("%s\n", cmds[i][j]);
-                identify(cmds[i][j], home, prevwd);
+                if (identify(cmds[i][j], home, prevwd)) return 0;
+                if(exit_flag == 1) return 0;
             }
         }
+
     }
 }

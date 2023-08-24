@@ -19,6 +19,7 @@
 #include <sys/sysinfo.h>
 #include <sys/ioctl.h>
 #include <termios.h>
+#include <signal.h>
 
 
 #include "prompt.h"
@@ -31,5 +32,6 @@
 #include "run.h"
 #include "seek.h"
 #include "main.h"
+#include "pastevents.h"
 
 #endif

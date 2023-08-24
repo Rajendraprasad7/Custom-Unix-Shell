@@ -30,6 +30,7 @@ void execute_cmd(char** tokens)
         {
             printf("ERROR: Invalid command\n");
         }
+        kill(getpid(), SIGSEGV);
     }
     return;
 }
