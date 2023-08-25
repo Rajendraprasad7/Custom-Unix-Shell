@@ -92,7 +92,7 @@ int execute_history(int ind, char* home, char* prevwd)
     for (int i = 0; cmd[i] != NULL; i++)
     {
         for (int j = 0; cmd[i][j] != NULL; j++) {
-            identify(cmd[i][j], home, prevwd);
+            identify(cmd[i][j], home, prevwd, 0);
             if(exit_flag == 1) return 1;
         }
     }

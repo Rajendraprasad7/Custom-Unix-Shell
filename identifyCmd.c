@@ -1,9 +1,12 @@
 #include "headers.h"
 
-int identify(char* cmd, char* home, char* prevwd)
+int identify(char* cmd, char* home, char* prevwd, int back)
 {
     char *tokens[10];
     int numTokens;
+
+    struct timeval start_time, end_time;
+    gettimeofday(&start_time, NULL);
 
     tokenizeit(cmd, tokens, &numTokens);
 
@@ -158,7 +161,17 @@ int identify(char* cmd, char* home, char* prevwd)
     else 
     {
         tokens[numTokens] = NULL;
-        execute_cmd(tokens);
+
+        int flag;
+        if (back >= 1)
+        {
+            flag = 1;
+        }
+        else 
+        {
+            flag = 0;
+        }
+        execute_cmd(tokens, flag);
     }
     return 0;
 }
