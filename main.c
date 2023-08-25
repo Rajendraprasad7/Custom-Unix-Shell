@@ -55,8 +55,15 @@ int main()
                 // printf("%d %d %s\n", i,j,cmds[i][j]);
                 char *tokens[100];
                 int numTokens;
-                tokenizeit(cmds[i][j], tokens, &numTokens);
-                update_prompt(start_time, tokens[0]);
+                if(bgs+1 <= 0)
+                {
+                    tokenizeit(cmds[i][j], tokens, &numTokens);
+                    update_prompt(start_time, tokens[0]);
+                }
+                else 
+                {
+                    strcpy(time_taken, "\0");
+                }
             }
         }
     }
